@@ -2,7 +2,6 @@ package seedu.address.model.person;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ID_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SPECIES_BOB;
@@ -31,8 +30,8 @@ public class PersonTest {
         // null -> returns false
         assertFalse(ALICE.isSamePerson(null));
 
-        // different ID and email -> returns false
-        Person editedAlice = new PersonBuilder(ALICE).withId(VALID_ID_BOB).withEmail(VALID_EMAIL_BOB).build();
+        // different ID and species -> returns false
+        Person editedAlice = new PersonBuilder(ALICE).withId(VALID_ID_BOB).withSpecies(VALID_SPECIES_BOB).build();
         assertFalse(ALICE.isSamePerson(editedAlice));
 
         // different name -> returns false
@@ -40,18 +39,14 @@ public class PersonTest {
         assertFalse(ALICE.isSamePerson(editedAlice));
 
         // same name, same ID, different attributes -> returns true
-        editedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).withSpecies(VALID_SPECIES_BOB)
+        editedAlice = new PersonBuilder(ALICE).withSpecies(VALID_SPECIES_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
-        // same name, same email, different attributes -> returns true
+        // same name, different ID, different attributes -> returns false
         editedAlice = new PersonBuilder(ALICE).withId(VALID_ID_BOB).withSpecies(VALID_SPECIES_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSamePerson(editedAlice));
-
-        // same name, same ID, same email, different attributes -> returns true
-        editedAlice = new PersonBuilder(ALICE).withSpecies(VALID_SPECIES_BOB).withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSamePerson(editedAlice));
+        assertFalse(ALICE.isSamePerson(editedAlice));
     }
 
     @Test
@@ -80,11 +75,7 @@ public class PersonTest {
         editedAlice = new PersonBuilder(ALICE).withId(VALID_ID_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
-        // different email -> returns false
-        editedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(ALICE.equals(editedAlice));
-
-        // different address -> returns false
+        // different species -> returns false
         editedAlice = new PersonBuilder(ALICE).withSpecies(VALID_SPECIES_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 

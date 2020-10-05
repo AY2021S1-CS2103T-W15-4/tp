@@ -3,7 +3,6 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.person.Email;
 import seedu.address.model.person.Id;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -18,12 +17,10 @@ public class PersonBuilder {
 
     public static final String DEFAULT_NAME = "Alice Pauline";
     public static final String DEFAULT_ID = "85355255";
-    public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_SPECIES = "Panthera leo";
 
     private Name name;
     private Id id;
-    private Email email;
     private Species species;
     private Set<Tag> tags;
 
@@ -33,7 +30,6 @@ public class PersonBuilder {
     public PersonBuilder() {
         name = new Name(DEFAULT_NAME);
         id = new Id(DEFAULT_ID);
-        email = new Email(DEFAULT_EMAIL);
         species = new Species(DEFAULT_SPECIES);
         tags = new HashSet<>();
     }
@@ -44,7 +40,6 @@ public class PersonBuilder {
     public PersonBuilder(Person personToCopy) {
         name = personToCopy.getName();
         id = personToCopy.getId();
-        email = personToCopy.getEmail();
         species = personToCopy.getSpecies();
         tags = new HashSet<>(personToCopy.getTags());
     }
@@ -81,16 +76,8 @@ public class PersonBuilder {
         return this;
     }
 
-    /**
-     * Sets the {@code Email} of the {@code Person} that we are building.
-     */
-    public PersonBuilder withEmail(String email) {
-        this.email = new Email(email);
-        return this;
-    }
-
     public Person build() {
-        return new Person(name, id, email, species, tags);
+        return new Person(name, id, species, tags);
     }
 
 }

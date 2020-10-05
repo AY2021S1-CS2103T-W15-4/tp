@@ -3,43 +3,36 @@
   "persons" : [ {
     "name" : "Alice Pauline",
     "id" : "94351253",
-    "email" : "alice@example.com",
     "species" : "123, Jurong West Ave 6, #08-111",
     "tagged" : [ "friends" ]
   }, {
     "name" : "Benson Meier",
     "id" : "98765432",
-    "email" : "johnd@example.com",
     "species" : "311, Clementi Ave 2, #02-25",
     "tagged" : [ "owesMoney", "friends" ]
   }, {
     "name" : "Carl Kurz",
     "id" : "95352563",
-    "email" : "heinz@example.com",
     "species" : "wall street",
     "tagged" : [ ]
   }, {
     "name" : "Daniel Meier",
     "id" : "87652533",
-    "email" : "cornelia@example.com",
     "species" : "10th street",
     "tagged" : [ "friends" ]
   }, {
     "name" : "Elle Meyer",
     "id" : "9482224",
-    "email" : "werner@example.com",
     "species" : "michegan ave",
     "tagged" : [ ]
   }, {
     "name" : "Fiona Kunz",
     "id" : "9482427",
-    "email" : "lydia@example.com",
     "species" : "little tokyo",
     "tagged" : [ ]
   }, {
     "name" : "George Best",
     "id" : "9482442",
-    "email" : "anna@example.com",
     "species" : "4th street",
     "tagged" : [ ]
   } ]

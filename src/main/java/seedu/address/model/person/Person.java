@@ -18,7 +18,6 @@ public class Person {
     // Identity fields
     private final Name name;
     private final Id id;
-    private final Email email;
 
     // Data fields
     private final Species species;
@@ -27,11 +26,10 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Id id, Email email, Species species, Set<Tag> tags) {
-        requireAllNonNull(name, id, email, species, tags);
+    public Person(Name name, Id id, Species species, Set<Tag> tags) {
+        requireAllNonNull(name, id, species, tags);
         this.name = name;
         this.id = id;
-        this.email = email;
         this.species = species;
         this.tags.addAll(tags);
     }
@@ -42,10 +40,6 @@ public class Person {
 
     public Id getId() {
         return id;
-    }
-
-    public Email getEmail() {
-        return email;
     }
 
     public Species getSpecies() {
@@ -71,7 +65,7 @@ public class Person {
 
         return otherPerson != null
                 && otherPerson.getName().equals(getName())
-                && (otherPerson.getId().equals(getId()) || otherPerson.getEmail().equals(getEmail()));
+                && (otherPerson.getId().equals(getId()));
     }
 
     /**
@@ -91,7 +85,6 @@ public class Person {
         Person otherPerson = (Person) other;
         return otherPerson.getName().equals(getName())
                 && otherPerson.getId().equals(getId())
-                && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getSpecies().equals(getSpecies())
                 && otherPerson.getTags().equals(getTags());
     }
@@ -99,7 +92,7 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, id, email, species, tags);
+        return Objects.hash(name, id, species, tags);
     }
 
     @Override
@@ -108,8 +101,6 @@ public class Person {
         builder.append(getName())
                 .append(" ID: ")
                 .append(getId())
-                .append(" Email: ")
-                .append(getEmail())
                 .append(" Species: ")
                 .append(getSpecies())
                 .append(" Tags: ");

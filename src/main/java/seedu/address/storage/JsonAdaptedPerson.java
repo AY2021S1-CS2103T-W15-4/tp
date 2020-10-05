@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.Email;
 import seedu.address.model.person.Id;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -26,7 +25,6 @@ class JsonAdaptedPerson {
 
     private final String name;
     private final String id;
-    private final String email;
     private final String species;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
@@ -35,11 +33,10 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("id") String id,
-            @JsonProperty("email") String email, @JsonProperty("species") String species,
+            @JsonProperty("species") String species,
             @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
         this.id = id;
-        this.email = email;
         this.species = species;
         if (tagged != null) {
             this.tagged.addAll(tagged);
@@ -52,7 +49,6 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(Person source) {
         name = source.getName().fullName;
         id = source.getId().value;
-        email = source.getEmail().value;
         species = source.getSpecies().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
@@ -86,14 +82,6 @@ class JsonAdaptedPerson {
         }
         final Id modelId = new Id(id);
 
-        if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
-        }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
-        }
-        final Email modelEmail = new Email(email);
-
         if (species == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Species.class.getSimpleName()));
         }
@@ -104,7 +92,7 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        return new Person(modelName, modelId, modelEmail, modelSpecies, modelTags);
+        return new Person(modelName, modelId, modelSpecies, modelTags);
     }
 
 }
