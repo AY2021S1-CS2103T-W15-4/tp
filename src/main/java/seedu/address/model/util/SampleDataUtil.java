@@ -18,24 +18,18 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
     public static Animal[] getSampleAnimals() {
         return new Animal[] {
-            new Animal(new Name("Alex Yeoh"), new Id("87438807"),
-                new Species("Blk 30 Geylang Street 29, #06-40"),
-                getTagSet("friends")),
-            new Animal(new Name("Bernice Yu"), new Id("99272758"),
-                new Species("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
-                getTagSet("colleagues", "friends")),
-            new Animal(new Name("Charlotte Oliveiro"), new Id("93210283"),
-                new Species("Blk 11 Ang Mo Kio Street 74, #11-04"),
-                getTagSet("neighbours")),
-            new Animal(new Name("David Li"), new Id("91031282"),
-                new Species("Blk 436 Serangoon Gardens Street 26, #16-43"),
-                getTagSet("family")),
-            new Animal(new Name("Irfan Ibrahim"), new Id("92492021"),
-                new Species("Blk 47 Tampines Street 20, #17-35"),
-                getTagSet("classmates")),
-            new Animal(new Name("Roy Balakrishnan"), new Id("92624417"),
-                new Species("Blk 45 Aljunied Street 85, #11-31"),
-                getTagSet("colleagues"))
+            new Animal(new Name("Letho"), new Id("000325"),
+                new Species("Blue Tongue Skink"),
+                getTagSet("Healthy")),
+            new Animal(new Name("Sulyvahn"), new Id("029381"),
+                new Species("Boa Constrictor"),
+                getTagSet("Healthy", "Hostile")),
+            new Animal(new Name("Nemo"), new Id("000001"),
+                new Species("Clownfish"),
+                getTagSet("Ill")),
+            new Animal(new Name("Ivan"), new Id("0242111"),
+                new Species("Badger"),
+                getTagSet("Healthy"))
         };
     }
 
