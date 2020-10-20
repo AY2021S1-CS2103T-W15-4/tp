@@ -23,15 +23,12 @@ public class SnapCommandParserTest {
         assertParseSuccess(parser, validFileName1, new SnapCommand(makePath(validFileName1), validFileName1));
 
         String validFileName2 = "_";
-        Path savePath2 = Path.of("src", "test", "data", "SnapCommandTest", validFileName2);
         assertParseSuccess(parser, validFileName2, new SnapCommand(makePath(validFileName2), validFileName2));
 
         String validFileName3 = "-";
-        Path savePath3 = Path.of("src", "test", "data", "SnapCommandTest", validFileName3);
         assertParseSuccess(parser, validFileName3, new SnapCommand(makePath(validFileName3), validFileName3));
 
         String validFileNameLength = "x".repeat(100);
-        Path savePath4 = Path.of("src", "test", "data", "SnapCommandTest", validFileNameLength);
         assertParseSuccess(parser, validFileNameLength,
                 new SnapCommand(makePath(validFileNameLength), validFileNameLength));
     }
