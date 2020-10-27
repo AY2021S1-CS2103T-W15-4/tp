@@ -4,19 +4,21 @@ title: Developer Guide
 ---
 * Table of Contents
 {:toc}
+{:sectnums}
+
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Setting up, getting started**
+== **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Design**
+== **Design**
 This section describes the high-level components that make up ZooKeep.
 
-### Architecture
+=== Architecture
 
 <img src="images/ArchitectureDiagram.png" width="450" />
 
@@ -66,7 +68,7 @@ scenario where the user issues the command `delete 123`.
 
 The sections below give more details of each component.
 
-### UI component
+=== UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -87,7 +89,7 @@ The `UI` component
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
-### Logic component
+=== Logic component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
@@ -107,7 +109,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
-### Model component
+=== Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
@@ -127,7 +129,7 @@ The `Model`,
 </div>
 
 
-### Storage component
+=== Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
@@ -137,19 +139,19 @@ The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the address book data in json format and read it back.
 
-### Common classes
+=== Common classes
 
 Classes used by multiple components are in the `seedu.zookeepbook.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+== **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### Undo feature (by Zhi Yuan)
+=== Undo feature (by Zhi Yuan)
 
-#### Implementation
+==== Implementation
 
 The undo feature is facilitated by a stack data structure.
 
@@ -220,9 +222,9 @@ New command | Undo command
 :-------------------------:|:-------------------------:
 ![ExecuteCommandActivityDiagram](images/ExecuteCommandActivityDiagram.png) | ![UndoCommandActivityDiagram](images/UndoCommandActivityDiagram.png)
 
-#### Design consideration:
+==== Design consideration:
 
-##### Aspect: How undo executes
+===== Aspect: How undo executes
 
 * **Alternative 1 (current choice):** Saves the entire ZooKeep book as a state.
   * Pros: Easy to implement, works with all commands immediately.
@@ -234,9 +236,9 @@ New command | Undo command
   * Cons: We must ensure that the implementation of each individual command are correct.
 
 
-### Redo feature (by Jun Cheng)
+=== Redo feature (by Jun Cheng)
 
-#### Implementation
+==== Implementation
 
 The Redo feature was added as a complement to the Undo feature which was done earlier. The addition of this
 feature required the integration of the `RedoCommand` class, which extends from the `Command` class like all other commands.
@@ -312,9 +314,9 @@ Undo command | Redo command
 ![UndoCommandWithRedoActivityDiagram](images/UndoCommandWithRedoActivityDiagram.png) | ![RedoCommandActivityDiagram](images/RedoCommandActivityDiagram.png)
 
 
-#### Design consideration:
+==== Design consideration:
 
-##### Aspect: How redo executes
+===== Aspect: How redo executes
 
 * **Alternative 1 (current choice):** Saves the entire ZooKeep book as a state.
   * Pros: Easy to implement, works with all commands immediately.
@@ -326,9 +328,9 @@ Undo command | Redo command
   * Cons: We must ensure that the implementation of each individual command are correct.
 
 
-### Snapshot feature (by Aizat)
+=== Snapshot feature (by Aizat)
 
-#### Implementation
+==== Implementation
 
 The snapshot feature is implemented by the `SnapCommand` and `SnapCommandParser` classes. 
 `SnapCommandParser` parses the user's input as a file name and then creates a `SnapCommand` 
@@ -346,14 +348,14 @@ The following sequence diagram illustrates the creation and execution of a `Snap
 should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
-#### Design considerations:
-##### Aspect: Overwriting files
+==== Design considerations:
+===== Aspect: Overwriting files
 * We chose to prevent users from creating a snapshot if the specified file name already exists
 as overwriting a file is irreversible and would be disastrous for zookeepers if done unintentionally
 
-### Sort feature (by Malcolm)
+=== Sort feature (by Malcolm)
 
-#### Implementation
+==== Implementation
 
 This section explains the implementation of the Sort command feature in the ZooKeepBook. This feature is used to sort the animals based on the different categories: **name, id or feedtime**.
 
@@ -388,14 +390,14 @@ The following activity diagram summarises what happens when a user executes a so
 
 ![SortCommandActivityDiagram](images/SortCommandActivityDiagram.png)
 
-#### Design Consideration  
-##### Aspect: Sorting based on different categories  
+==== Design Consideration  
+===== Aspect: Sorting based on different categories  
 We chose to allow the user to sort not only based on animal names but also by their id and feedtime to ease the convenience of the user when he needs data to be sorted in other ways.
 
 
-### Feeding times feature (by Jeremy)
+=== Feeding times feature (by Jeremy)
 
-#### Implementation
+==== Implementation
 
 The feeding time feature utilizes a TreeSet with a custom comparator.
 
@@ -438,9 +440,9 @@ The following activity diagram summarizes what happens when feeding times are ad
 
 ![FeedTimesActivityDiagram](images/FeedTimesActivityDiagram.png)
 
-#### Design consideration:
+==== Design consideration:
 
-##### Aspect: How chronological order is maintained
+===== Aspect: How chronological order is maintained
 
 * **Alternative 1 (current choice):** Store the feeding times in chronological order
   * Pros: Quick to display when retrieving information
@@ -453,7 +455,7 @@ The following activity diagram summarizes what happens when feeding times are ad
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+== **Documentation, logging, testing, configuration, dev-ops**
 This section provides guides for developers wishing to take on this framework for extension or morphing.
 
 * [Documentation guide](Documentation.md)
@@ -464,10 +466,10 @@ This section provides guides for developers wishing to take on this framework fo
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+== **Appendix: Requirements**
 This section lists the target requirements for ZooKeep.
 
-### Product scope
+=== Product scope
 
 **Target user profile**:
 
@@ -484,7 +486,7 @@ This section lists the target requirements for ZooKeep.
 * Easier to transfer a large amount of animal information when zookeepers change shifts.
 * Manage animals faster than a typical mouse/GUI driven app.
 
-### User stories
+=== User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -504,7 +506,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### Use cases
+=== Use cases
 
 (For all use cases below, the **System** is the `ZooKeepBook` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -678,7 +680,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   * Use case ends
   
-### Non-Functional Requirements
+=== Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 animals without a noticeable sluggishness in performance for typical usage.
@@ -697,7 +699,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 15. The project is expected to adhere to the schedule of the CS2103/CS2103T tP timeline which requires weekly deliverables and increments.
 16. The project is not required to sort and arrange tasks among all staff or ensure efficient task allocation and completion.
 
-### Glossary
+=== Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Data persistence**: data provided by the user can be saved and updated to the hard drive, and can also be loaded once system is booted up again
@@ -706,7 +708,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+== **Appendix: Instructions for manual testing**
 This section provides instructions for testing the application manually.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
@@ -714,7 +716,7 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-### Launch and shutdown
+=== Launch and shutdown
 
 1. Initial launch
 
@@ -731,7 +733,7 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting a person
+=== Deleting a person
 
 1. Deleting a person while all persons are being shown
 
@@ -748,7 +750,7 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Saving data
+=== Saving data
 
 1. Dealing with missing/corrupted data files
 
