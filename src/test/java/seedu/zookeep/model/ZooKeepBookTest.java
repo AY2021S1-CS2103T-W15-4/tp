@@ -3,6 +3,7 @@ package seedu.zookeep.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.zookeep.logic.commands.CommandTestUtil.VALID_FEED_TIME_MORNING;
 import static seedu.zookeep.logic.commands.CommandTestUtil.VALID_MEDICAL_CONDITION_ARTHRITIS;
 import static seedu.zookeep.logic.commands.CommandTestUtil.VALID_SPECIES_BAILEY;
 import static seedu.zookeep.testutil.Assert.assertThrows;
@@ -45,9 +46,10 @@ public class ZooKeepBookTest {
 
     @Test
     public void resetData_withDuplicateAnimals_throwsDuplicateAnimalException() {
-        // Two animals with the same identity fields
+        // Two animals with the same identity fields (same id)
         Animal editedAhmeng = new AnimalBuilder(AHMENG).withSpecies(VALID_SPECIES_BAILEY)
                 .withMedicalConditions(VALID_MEDICAL_CONDITION_ARTHRITIS)
+                .withFeedTimes(VALID_FEED_TIME_MORNING)
                 .build();
         List<Animal> newAnimals = Arrays.asList(AHMENG, editedAhmeng);
         ZooKeepBookStub newData = new ZooKeepBookStub(newAnimals);
@@ -76,6 +78,7 @@ public class ZooKeepBookTest {
         zooKeepBook.addAnimal(AHMENG);
         Animal editedAhmeng = new AnimalBuilder(AHMENG).withSpecies(VALID_SPECIES_BAILEY)
                 .withMedicalConditions(VALID_MEDICAL_CONDITION_ARTHRITIS)
+                .withFeedTimes(VALID_FEED_TIME_MORNING)
                 .build();
         assertTrue(zooKeepBook.hasAnimal(editedAhmeng));
     }

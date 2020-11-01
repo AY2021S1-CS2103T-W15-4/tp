@@ -75,8 +75,13 @@ public class AnimalContainsKeywordsPredicateTest {
         predicate = new AnimalContainsKeywordsPredicate(Arrays.asList("Coco"));
         assertFalse(predicate.test(new AnimalBuilder().withName("Ahmeng Buttercup").build()));
 
-        // Multiple non-matching keywords
+        // Multiple keywords, with one keyword partially matching
         predicate = new AnimalContainsKeywordsPredicate(Arrays.asList("0000123", "Reti", "Anaconda"));
+        assertTrue(predicate.test(new AnimalBuilder().withName("Buttercup").withId("000123")
+                .withSpecies("Reticulated Python").build()));
+
+        // Multiple non-matching keywords
+        predicate = new AnimalContainsKeywordsPredicate(Arrays.asList("0000123", "Lopez", "Anaconda"));
         assertFalse(predicate.test(new AnimalBuilder().withName("Buttercup").withId("000123")
                 .withSpecies("Reticulated Python").build()));
     }

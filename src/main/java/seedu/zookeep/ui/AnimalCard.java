@@ -61,7 +61,8 @@ public class AnimalCard extends UiPart<Region> {
 
         if (!animal.getMedicalConditions().isEmpty()) {
             animal.getMedicalConditions().stream()
-                    .sorted(Comparator.comparing(medicalCondition -> medicalCondition.medicalConditionName))
+                    .sorted(Comparator.comparing(medicalCondition ->
+                            medicalCondition.medicalConditionName.toLowerCase()))
                     .forEach(medicalCondition -> medicalConditions.getChildren()
                             .add(new Label(medicalCondition.medicalConditionName)));
         } else {

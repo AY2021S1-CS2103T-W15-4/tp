@@ -120,7 +120,7 @@ The Class Diagram for the Logic Component is shown below (*Figure 5*)
 **API** :
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-W15-4/tp/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
-1. `Logic` uses the `AddressBookParser` class to parse the user command.
+1. `Logic` uses the `ZooKeepBookParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
 1. The command execution can affect the `Model` (e.g. adding an animal).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.

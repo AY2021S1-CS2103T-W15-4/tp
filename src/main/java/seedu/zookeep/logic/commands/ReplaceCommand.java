@@ -40,7 +40,7 @@ public class ReplaceCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1234 "
             + PREFIX_ID + "91234567 ";
 
-    public static final String MESSAGE_REPLACE_ANIMAL_SUCCESS = "Replaced Animal Details: %1$s";
+    public static final String MESSAGE_REPLACE_ANIMAL_SUCCESS = "Replaced Animal Details\n%1$s";
     public static final String MESSAGE_NOT_REPLACED = "At least one field to replace must be provided.";
     public static final String MESSAGE_DUPLICATE_ANIMAL = "This animal ID already exists in the zookeep book.";
 

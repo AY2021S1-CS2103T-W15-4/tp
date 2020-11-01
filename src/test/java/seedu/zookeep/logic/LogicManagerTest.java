@@ -73,7 +73,7 @@ public class LogicManagerTest {
         // Execute add command
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_ARCHIE + ID_DESC_ARCHIE
                 + SPECIES_DESC_ARCHIE;
-        Animal expectedAnimal = new AnimalBuilder(ARCHIE).withMedicalConditions().build();
+        Animal expectedAnimal = new AnimalBuilder(ARCHIE).withMedicalConditions().withFeedTimes().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addAnimal(expectedAnimal);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;

@@ -23,7 +23,7 @@ public class DeleteCommand extends Command {
             + "Parameters: ID (must be a positive integer > 3 digits)\n"
             + "Example: " + COMMAND_WORD + " 123";
 
-    public static final String MESSAGE_DELETE_ANIMAL_SUCCESS = "Deleted Animal: %1$s";
+    public static final String MESSAGE_DELETE_ANIMAL_SUCCESS = "Deleted Animal\n%1$s";
 
     private final Id targetID;
 

@@ -3,7 +3,8 @@
     "name": "Buttercup",
     "id": "123",
     "species": "Reticulated Python",
-    "medicalConditions": [ "Stomatitis" ]
+    "medicalConditions": [ "Stomatitis" ],
+    "feedTimes": [ "0800", "1800" ]
   }, {
     "name": "Buttercup",
     "id": "123",

@@ -109,7 +109,8 @@ public class EditAnimalDescriptor {
         return getName().equals(e.getName())
                 && getId().equals(e.getId())
                 && getSpecies().equals(e.getSpecies())
-                && getMedicalConditions().equals(e.getMedicalConditions());
+                && getMedicalConditions().equals(e.getMedicalConditions())
+                && getFeedTimes().equals(e.getFeedTimes());
     }
 
     /**

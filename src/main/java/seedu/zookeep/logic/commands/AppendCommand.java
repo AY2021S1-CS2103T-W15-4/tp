@@ -34,7 +34,7 @@ public class AppendCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1234 "
             + PREFIX_FEED_TIME + "1234 ";
 
-    public static final String MESSAGE_APPEND_ANIMAL_SUCCESS = "Appended Animal Details: %1$s";
+    public static final String MESSAGE_APPEND_ANIMAL_SUCCESS = "Appended Animal Details\n%1$s";
     public static final String MESSAGE_NOT_APPENDED = "At least one field to append must be provided.";
 
     private final Id id;

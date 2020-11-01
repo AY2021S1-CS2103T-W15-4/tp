@@ -5,7 +5,6 @@ import static seedu.zookeep.commons.util.AppUtil.checkArgument;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.Arrays;
 
 /**
  * Helper functions for handling strings.
@@ -34,8 +33,23 @@ public class StringUtil {
         String preppedSentence = sentence;
         String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
 
-        return Arrays.stream(wordsInPreppedSentence)
-                .anyMatch(preppedWord::equalsIgnoreCase);
+        for (String singleWord : wordsInPreppedSentence) {
+            if (containsIgnoreCase(singleWord, preppedWord)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Returns true if {@code str} contains the {@code subString}, both converted to lowercase.
+     * @param str cannot be null
+     * @param subString cannot be null, cannot be empty, must be a single word
+     * @return
+     */
+    public static boolean containsIgnoreCase(String str, String subString) {
+        return str.toLowerCase().contains(subString.toLowerCase());
     }
 
     /**

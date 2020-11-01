@@ -92,7 +92,8 @@ public class Animal {
         return otherAnimal.getName().equals(getName())
                 && otherAnimal.getId().equals(getId())
                 && otherAnimal.getSpecies().equals(getSpecies())
-                && otherAnimal.getMedicalConditions().equals(getMedicalConditions());
+                && otherAnimal.getMedicalConditions().equals(getMedicalConditions())
+                && otherAnimal.getFeedTimes().equals(getFeedTimes());
     }
 
     @Override
@@ -104,14 +105,15 @@ public class Animal {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
+        builder.append("Name: ")
+                .append(getName())
                 .append(" ID: ")
                 .append(getId())
                 .append(" Species: ")
                 .append(getSpecies())
                 .append(" Medical conditions: ");
         getMedicalConditions().forEach(builder::append);
-        builder.append(" Feeding times: ");
+        builder.append(" Feed times: ");
         getFeedTimes().forEach(builder::append);
         return builder.toString();
     }

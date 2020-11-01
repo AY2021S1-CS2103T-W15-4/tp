@@ -17,6 +17,7 @@ import seedu.zookeep.logic.parser.exceptions.ParseException;
 import seedu.zookeep.model.animal.Id;
 import seedu.zookeep.model.animal.Name;
 import seedu.zookeep.model.animal.Species;
+import seedu.zookeep.model.feedtime.FeedTime;
 import seedu.zookeep.model.medicalcondition.MedicalCondition;
 
 public class ParserUtilTest {
@@ -24,12 +25,15 @@ public class ParserUtilTest {
     private static final String INVALID_ID = "+651234";
     private static final String INVALID_SPECIES = " ";
     private static final String INVALID_MEDICAL_CONDITION = "#dead";
+    private static final String INVALID_FEED_TIME = "+1200";
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_SPECIES = "Cat";
     private static final String VALID_ID = "123456";
     private static final String VALID_MEDICAL_CONDITION_1 = "Flu";
     private static final String VALID_MEDICAL_CONDITION_2 = "Drowsy";
+    private static final String VALID_FEED_TIME_1 = "0800";
+    private static final String VALID_FEED_TIME_2 = "1800";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -170,5 +174,55 @@ public class ParserUtilTest {
                 new MedicalCondition(VALID_MEDICAL_CONDITION_1), new MedicalCondition(VALID_MEDICAL_CONDITION_2)));
 
         assertEquals(expectedMedicalConditionSet, actualMedicalConditionSet);
+    }
+
+    @Test
+    public void parseFeedTime_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseFeedTime(null));
+    }
+
+    @Test
+    public void parseFeedTime_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseFeedTime(INVALID_FEED_TIME));
+    }
+
+    @Test
+    public void parseFeedTime_validValueWithoutWhitespace_returnsFeedTime() throws Exception {
+        FeedTime expectedFeedTime = new FeedTime(VALID_FEED_TIME_1);
+        assertEquals(expectedFeedTime, ParserUtil.parseFeedTime(VALID_FEED_TIME_1));
+    }
+
+    @Test
+    public void parseFeedTime_validValueWithWhitespace_returnsTrimmedFeedTime() throws Exception {
+        String feedTimeWithWhitespace = WHITESPACE + VALID_FEED_TIME_1 + WHITESPACE;
+        FeedTime expectedFeedTime = new FeedTime(VALID_FEED_TIME_1);
+        assertEquals(expectedFeedTime, ParserUtil.parseFeedTime(feedTimeWithWhitespace));
+    }
+
+    @Test
+    public void parseFeedTimes_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseFeedTimes(null));
+    }
+
+    @Test
+    public void parseFeedTimes_collectionWithInvalidFeedTimes_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseFeedTimes(Arrays
+                .asList(VALID_FEED_TIME_1, INVALID_FEED_TIME)));
+    }
+
+    @Test
+    public void parseFeedTimes_emptyCollection_returnsEmptySet() throws Exception {
+        assertTrue(ParserUtil.parseFeedTimes(Collections.emptyList()).isEmpty());
+    }
+
+    @Test
+    public void parseFeedTimes_collectionWithValidFeedTimes_returnsFeedTimeSet()
+            throws Exception {
+        Set<FeedTime> actualFeedTimeSet = ParserUtil.parseFeedTimes(Arrays
+                .asList(VALID_FEED_TIME_1, VALID_FEED_TIME_2));
+        Set<FeedTime> expectedFeedTimeSet = new HashSet<FeedTime>(Arrays.asList(
+                new FeedTime(VALID_FEED_TIME_1), new FeedTime(VALID_FEED_TIME_2)));
+
+        assertEquals(expectedFeedTimeSet, actualFeedTimeSet);
     }
 }

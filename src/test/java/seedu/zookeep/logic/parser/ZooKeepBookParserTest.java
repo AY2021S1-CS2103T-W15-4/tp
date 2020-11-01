@@ -109,8 +109,7 @@ public class ZooKeepBookParserTest {
 
     @Test
     public void parseCommand_replace() throws Exception {
-        Animal animal = new AnimalBuilder().build();
-        EditAnimalDescriptor descriptor = new EditAnimalDescriptorBuilder(animal).build();
+        EditAnimalDescriptor descriptor = new EditAnimalDescriptorBuilder().withMedicalConditions("obese").build();
         ReplaceCommand command = (ReplaceCommand) parser.parseCommand(ReplaceCommand.COMMAND_WORD + " "
                 + AHMENG.getId().value + " " + AnimalUtil.getEditAnimalDescriptorDetails(descriptor));
         assertEquals(new ReplaceCommand(AHMENG.getId(), descriptor), command);

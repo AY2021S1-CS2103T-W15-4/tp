@@ -2,6 +2,7 @@ package seedu.zookeep.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.zookeep.logic.parser.CliSyntax.PREFIX_FEED_TIME;
 import static seedu.zookeep.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.zookeep.logic.parser.CliSyntax.PREFIX_MEDICAL_CONDITION;
 import static seedu.zookeep.logic.parser.CliSyntax.PREFIX_NAME;
@@ -37,6 +38,8 @@ public class CommandTestUtil {
     public static final String VALID_SPECIES_BAILEY = "Golden Retriever";
     public static final String VALID_MEDICAL_CONDITION_ARTHRITIS = "arthritis";
     public static final String VALID_MEDICAL_CONDITION_OBESE = "obese";
+    public static final String VALID_FEED_TIME_MORNING = "0800";
+    public static final String VALID_FEED_TIME_EVENING = "1800";
 
     public static final String NAME_DESC_ARCHIE = " " + PREFIX_NAME + VALID_NAME_ARCHIE;
     public static final String NAME_DESC_BAILEY = " " + PREFIX_NAME + VALID_NAME_BAILEY;
@@ -44,16 +47,22 @@ public class CommandTestUtil {
     public static final String ID_DESC_BAILEY = " " + PREFIX_ID + VALID_ID_BAILEY;
     public static final String SPECIES_DESC_ARCHIE = " " + PREFIX_SPECIES + VALID_SPECIES_ARCHIE;
     public static final String SPECIES_DESC_BAILEY = " " + PREFIX_SPECIES + VALID_SPECIES_BAILEY;
-    public static final String MEDICAL_CONDITION_DESC_OBESE =
-            " " + PREFIX_MEDICAL_CONDITION + VALID_MEDICAL_CONDITION_OBESE;
     public static final String MEDICAL_CONDITION_DESC_ARTHRITIS =
             " " + PREFIX_MEDICAL_CONDITION + VALID_MEDICAL_CONDITION_ARTHRITIS;
+    public static final String MEDICAL_CONDITION_DESC_OBESE =
+            " " + PREFIX_MEDICAL_CONDITION + VALID_MEDICAL_CONDITION_OBESE;
+    public static final String FEED_TIME_DESC_MORNING =
+            " " + PREFIX_FEED_TIME + VALID_FEED_TIME_MORNING;
+    public static final String FEED_TIME_DESC_EVENING =
+            " " + PREFIX_FEED_TIME + VALID_FEED_TIME_EVENING;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_ID_DESC = " " + PREFIX_ID + "911a"; // 'a' not allowed in IDs
     public static final String INVALID_SPECIES_DESC = " " + PREFIX_SPECIES; // empty string not allowed for species
     public static final String INVALID_MEDICAL_CONDITION_DESC =
             " " + PREFIX_MEDICAL_CONDITION + "Flu*"; // '*' not allowed in medicalConditions
+    public static final String INVALID_FEED_TIME_DESC =
+            " " + PREFIX_FEED_TIME + "2399"; // 99 is not allowed to be the minutes of the current feed time
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
@@ -64,10 +73,12 @@ public class CommandTestUtil {
     static {
         DESC_ARCHIE = new EditAnimalDescriptorBuilder().withName(VALID_NAME_ARCHIE)
                 .withId(VALID_ID_ARCHIE).withSpecies(VALID_SPECIES_ARCHIE)
-                .withMedicalConditions(VALID_MEDICAL_CONDITION_OBESE).build();
+                .withMedicalConditions(VALID_MEDICAL_CONDITION_ARTHRITIS)
+                .withFeedTimes(VALID_FEED_TIME_MORNING).build();
         DESC_BAILEY = new EditAnimalDescriptorBuilder().withName(VALID_NAME_BAILEY)
                 .withId(VALID_ID_BAILEY).withSpecies(VALID_SPECIES_BAILEY)
-                .withMedicalConditions(VALID_MEDICAL_CONDITION_ARTHRITIS, VALID_MEDICAL_CONDITION_OBESE).build();
+                .withMedicalConditions(VALID_MEDICAL_CONDITION_ARTHRITIS, VALID_MEDICAL_CONDITION_OBESE)
+                .withFeedTimes(VALID_FEED_TIME_MORNING, VALID_FEED_TIME_EVENING).build();
     }
 
     /**

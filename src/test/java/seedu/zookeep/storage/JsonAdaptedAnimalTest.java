@@ -21,6 +21,7 @@ public class JsonAdaptedAnimalTest {
     private static final String INVALID_ID = "+651234";
     private static final String INVALID_SPECIES = " ";
     private static final String INVALID_MEDICAL_CONDITION = "#dead";
+    private static final String INVALID_FEED_TIME = "+1200";
 
     private static final String VALID_NAME = BUTTERCUP.getName().toString();
     private static final String VALID_ID = BUTTERCUP.getId().toString();
@@ -97,6 +98,15 @@ public class JsonAdaptedAnimalTest {
         invalidMedicalConditions.add(new JsonAdaptedMedicalCondition(INVALID_MEDICAL_CONDITION));
         JsonAdaptedAnimal animal =
                 new JsonAdaptedAnimal(VALID_NAME, VALID_ID, VALID_SPECIES, invalidMedicalConditions, VALID_FEED_TIMES);
+        assertThrows(IllegalValueException.class, animal::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidFeedTimes_throwsIllegalValueException() {
+        List<JsonAdaptedFeedTime> invalidFeedTimes = new ArrayList<>(VALID_FEED_TIMES);
+        invalidFeedTimes.add(new JsonAdaptedFeedTime(INVALID_FEED_TIME));
+        JsonAdaptedAnimal animal =
+                new JsonAdaptedAnimal(VALID_NAME, VALID_ID, VALID_SPECIES, VALID_MEDICAL_CONDITIONS, invalidFeedTimes);
         assertThrows(IllegalValueException.class, animal::toModelType);
     }
 

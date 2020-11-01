@@ -1,5 +1,6 @@
 package seedu.zookeep.testutil;
 
+import static seedu.zookeep.logic.parser.CliSyntax.PREFIX_FEED_TIME;
 import static seedu.zookeep.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.zookeep.logic.parser.CliSyntax.PREFIX_MEDICAL_CONDITION;
 import static seedu.zookeep.logic.parser.CliSyntax.PREFIX_NAME;
@@ -10,7 +11,9 @@ import java.util.Set;
 import seedu.zookeep.logic.commands.AddCommand;
 import seedu.zookeep.logic.commands.EditAnimalDescriptor;
 import seedu.zookeep.model.animal.Animal;
+import seedu.zookeep.model.feedtime.FeedTime;
 import seedu.zookeep.model.medicalcondition.MedicalCondition;
+
 
 /**
  * A utility class for Animal.
@@ -35,6 +38,9 @@ public class AnimalUtil {
         animal.getMedicalConditions().stream().forEach(
             s -> sb.append(PREFIX_MEDICAL_CONDITION + s.medicalConditionName + " ")
         );
+        animal.getFeedTimes().stream().forEach(
+            s -> sb.append(PREFIX_FEED_TIME + s.feedTime + " ")
+        );
         return sb.toString();
     }
 
@@ -53,6 +59,15 @@ public class AnimalUtil {
             } else {
                 medicalConditions.forEach(s -> sb.append(PREFIX_MEDICAL_CONDITION)
                         .append(s.medicalConditionName).append(" "));
+            }
+        }
+        if (descriptor.getFeedTimes().isPresent()) {
+            Set<FeedTime> feedTimes = descriptor.getFeedTimes().get();
+            if (feedTimes.isEmpty()) {
+                sb.append(PREFIX_FEED_TIME);
+            } else {
+                feedTimes.forEach(s -> sb.append(PREFIX_FEED_TIME)
+                        .append(s.feedTime).append(" "));
             }
         }
         return sb.toString();

@@ -4,36 +4,43 @@
     "name" : "Ahmeng",
     "id" : "123",
     "species" : "Orangutan",
-    "medicalConditions" : [ "Deceased" ]
+    "medicalConditions" : [ "Deceased" ],
+    "feedTimes" : [ ]
   }, {
     "name" : "Buttercup",
     "id" : "456",
     "species" : "Reticulated Python",
-    "medicalConditions" : [ "Skin Infection", "Inclusion Body Disease" ]
+    "medicalConditions" : [ "Skin Infection", "Inclusion Body Disease" ],
+    "feedTimes" : [ "1300", "1800" ]
   }, {
     "name" : "Coco",
     "id" : "125",
     "species" : "Chihuahua",
-    "medicalConditions" : [ ]
+    "medicalConditions" : [ ],
+    "feedTimes" : [ "1200" ]
   }, {
     "name" : "Esther",
     "id" : "126",
     "species" : "Pig",
-    "medicalConditions" : [ "Swine Flu" ]
+    "medicalConditions" : [ "Swine Flu" ],
+    "feedTimes" : [ ]
   }, {
     "name" : "Grecia",
     "id" : "134",
     "species" : "Toucan",
-    "medicalConditions" : [ ]
+    "medicalConditions" : [ ],
+    "feedTimes" : [ "0600", "1200", "1800" ]
   }, {
     "name" : "Nemo",
     "id" : "1212",
     "species" : "Clownfish",
-    "medicalConditions" : [ ]
+    "medicalConditions" : [ ],
+    "feedTimes" : [ "0800", "1300", "1900" ]
   }, {
     "name" : "Pasha",
     "id" : "1234",
     "species" : "White Tiger",
-    "medicalConditions" : [ ]
+    "medicalConditions" : [ "Obese" ],
+    "feedTimes" : [ ]
   } ]
 }

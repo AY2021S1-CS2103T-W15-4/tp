@@ -4,18 +4,21 @@ skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
-AddressBook *-right-> "1" UniquePersonList
-AddressBook *-right-> "1" UniqueTagList
-UniqueTagList -[hidden]down- UniquePersonList
-UniqueTagList -[hidden]down- UniquePersonList
+ZooKeepBook *-right-> "1" UniqueAnimalList
+ZooKeepBook *-right-> "1" UniqueMedicalConditionList
+ZooKeepBook *-right-> "1" UniqueFeedTimeList
 
-UniqueTagList *-right-> "*" Tag
-UniquePersonList o-right-> Person
+UniqueMedicalConditionList -[hidden]down- UniqueAnimalList
+UniqueFeedTimeList -[hidden]down- UniqueAnimalList
 
-Person -up-> "*" Tag
+UniqueFeedTimeList *-right-> "*" FeedTime
+UniqueMedicalConditionList *-right-> "*" MedicalCondition
+UniqueAnimalList o-right-> Animal
 
-Person *--> Name
-Person *--> Phone
-Person *--> Email
-Person *--> Address
+Animal -up-> "*" FeedTime
+Animal -up-> "*" MedicalCondition
+
+Animal *--> Species
+Animal *--> Name
+Animal *--> Id
 @enduml
