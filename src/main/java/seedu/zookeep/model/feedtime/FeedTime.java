@@ -10,7 +10,7 @@ import static seedu.zookeep.commons.util.AppUtil.checkArgument;
 public class FeedTime implements Comparable<FeedTime> {
     public static final String MESSAGE_CONSTRAINTS =
             "Feed times should be in the format HHmm, and it should not be blank";
-    public static final String VALIDATION_REGEX = "[0-2][0-9][0-5][0-9]";
+    public static final String VALIDATION_REGEX = "([01]?[0-9]|2[0-3])[0-5][0-9]";
     public final String feedTime;
 
     /**
