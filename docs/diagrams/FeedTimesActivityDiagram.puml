@@ -6,7 +6,7 @@ start
 'diamond we place it as the true branch instead.
 
 if () then ([f/ argument(s) specified])
-    :ArgumentTokenizer parses feeding times and other fields;
+    :ArgumentTokenizer parses feed times and other fields;
     :ParserUtil creates TreeSet<FeedTime> with comparator;
 else ([else])
     :ArgumentTokenizer parses other fields;

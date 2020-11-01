@@ -19,8 +19,8 @@ public class AnimalContainsKeywordsPredicate implements Predicate<Animal> {
     }
 
     /**
-     * Checks if the keyword matches any of the strings in an animal's feeding times.
-     * @param feedTimes A set containing all of the animal's feeding times.
+     * Checks if the keyword matches any of the strings in an animal's feed times.
+     * @param feedTimes A set containing all of the animal's feed times.
      * @param word A given keyword.
      * @return The boolean that checks if the keyword matches.
      */

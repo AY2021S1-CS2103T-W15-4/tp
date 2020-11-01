@@ -52,8 +52,8 @@ public class AnimalContainsKeywordsPredicateTest {
         assertTrue(predicate.test(new AnimalBuilder().withName("Ahmeng Buttercup").build()));
 
         // Multiple keywords which match in different fields
-        predicate = new AnimalContainsKeywordsPredicate(Arrays.asList("000123", "Reticulated", "Python"));
-        assertTrue(predicate.test(new AnimalBuilder().withName("Buttercup").withId("000123")
+        predicate = new AnimalContainsKeywordsPredicate(Arrays.asList("123", "Reticulated", "Python"));
+        assertTrue(predicate.test(new AnimalBuilder().withName("Buttercup").withId("123")
                 .withSpecies("Reticulated Python").build()));
 
         // Only one matching keyword
@@ -76,13 +76,13 @@ public class AnimalContainsKeywordsPredicateTest {
         assertFalse(predicate.test(new AnimalBuilder().withName("Ahmeng Buttercup").build()));
 
         // Multiple keywords, with one keyword partially matching
-        predicate = new AnimalContainsKeywordsPredicate(Arrays.asList("0000123", "Reti", "Anaconda"));
-        assertTrue(predicate.test(new AnimalBuilder().withName("Buttercup").withId("000123")
+        predicate = new AnimalContainsKeywordsPredicate(Arrays.asList("123", "Reti", "Anaconda"));
+        assertTrue(predicate.test(new AnimalBuilder().withName("Buttercup").withId("124")
                 .withSpecies("Reticulated Python").build()));
 
         // Multiple non-matching keywords
-        predicate = new AnimalContainsKeywordsPredicate(Arrays.asList("0000123", "Lopez", "Anaconda"));
-        assertFalse(predicate.test(new AnimalBuilder().withName("Buttercup").withId("000123")
+        predicate = new AnimalContainsKeywordsPredicate(Arrays.asList("123", "Lopez", "Anaconda"));
+        assertFalse(predicate.test(new AnimalBuilder().withName("Buttercup").withId("124")
                 .withSpecies("Reticulated Python").build()));
     }
 }

@@ -16,7 +16,7 @@ public class FeedTime implements Comparable<FeedTime> {
     /**
      * Constructs a {@code FeedTime}.
      *
-     * @param feedTimeText A valid feeding time.
+     * @param feedTimeText A valid feed time.
      */
     public FeedTime(String feedTimeText) {
         requireNonNull(feedTimeText);
@@ -25,7 +25,7 @@ public class FeedTime implements Comparable<FeedTime> {
     }
 
     /**
-     * Returns true if a given string is a valid feeding time.
+     * Returns true if a given string is a valid feed time.
      */
     public static boolean isValidFeedTime(String feedTimeText) {
         return feedTimeText.matches(VALIDATION_REGEX);
